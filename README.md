@@ -1,14 +1,26 @@
-# Tutorial-Instalacao
+# Tutorial Instalação para Desenvolvedores
 
 
 # 1º Passo - Instalar o Postgres
 
-* sudo apt-get install postgres
+- Atualizar o sistema antes de tudo
+    * sudo apt-get update
+
+- Instalar o postgresql
+    * sudo apt-get install postgresql
+    * sudo apt-get install pgadmin3
+
+- Criar usuários
+    * sudo su postgres
+    * psql
+    * alter user postgres with password '123';
+    * Acessar o pgadmin com o usuário postgres e criar um usuário para o Odoo por lá
+
 
 # 2º Passo - Baixar as dependencias do Odoo
 
-* Baixar o arquivo dependencias apt-get
-* Baixar o arquivo dependencias pip
+* Baixar o arquivo [dependencias apt-get](apt-requirements)
+* Baixar o arquivo [dependencias pip](pip-requirements)
 
 
 
