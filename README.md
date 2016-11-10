@@ -21,6 +21,7 @@
 
 * Baixar o arquivo [dependencias apt-get](apt-requirements)
 * Baixar o arquivo [dependencias pip](pip-requirements)
+* sudo apt-get install -y --no-install-recommends $(grep -v '^#' apt-requirements)
 
 
 
