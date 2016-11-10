@@ -1,0 +1,12 @@
+[options]
+addons_path=addons,odoo/addons
+admin_passwd = admin
+auto_reload = False
+csv_internal_sep = ,
+db_host = localhost
+db_maxconn = 64
+db_name = False
+db_port = False
+db_template = template0
+db_user = odoo
+db_password= 123
