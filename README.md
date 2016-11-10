@@ -34,3 +34,7 @@
 * git clone https://github.com/odoo/odoo.git
 
 # 4º Passo - Rodar o Odoo
+
+* Baixar o arquivo de [configuração do odoo](odoo-config)
+* Colocar o arquivo dentro da pasta do odoo e configurar usuario e senha
+* ./odoo-bin --config=odoo-config
