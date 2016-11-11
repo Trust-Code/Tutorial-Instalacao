@@ -43,4 +43,7 @@ openpyxl==2.4.0-b1
 boto==2.38.0
 odoorpc
 suds_requests
+pytrustnfe
+python-boleto
+python-cnab
 http://labs.libre-entreprise.org/frs/download.php/897/pyxmlsec-0.3.1.tar.gz
