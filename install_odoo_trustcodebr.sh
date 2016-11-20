@@ -113,7 +113,7 @@ git clone https://github.com/odoo/odoo.git
 echo "Terminando o arquivo de configuração, quase lá."
 rm ~/odoo/odoo-config
 echo "[options]" >> ~/odoo/odoo-config
-echo "addons_path=addons,odoo/addons,odoo-brasil" >> ~/odoo/odoo-config
+echo "addons_path=addons,odoo/addons,~/odoo-brasil" >> ~/odoo/odoo-config
 echo "admin_passwd = admin" >> ~/odoo/odoo-config
 echo "auto_reload = False" >> ~/odoo/odoo-config
 echo "csv_internal_sep = ," >> ~/odoo/odoo-config
