@@ -34,13 +34,14 @@ sudo apt-get install --no-install-recommends libpq-dev -y
 sudo apt-get install --no-install-recommends libjpeg-dev -y
 sudo apt-get install --no-install-recommends nodejs -y
 sudo apt-get install --no-install-recommends npm -y
+sudo apt-get install node-less -y
 
 echo "instalando ##### Dependências da Localização Brasileira #####"
 sudo apt-get install --no-install-recommends python-libxml2 -y
 sudo apt-get install --no-install-recommends libxmlsec1-dev -y
 sudo apt-get install --no-install-recommends python-openssl -y
 sudo apt-get install --no-install-recommends python-cffi -y
-
+ 
 echo "##### Dependências do WKHTMLTOX #####"
 sudo apt-get install --no-install-recommends zlib1g-dev -y
 sudo apt-get install --no-install-recommends fontconfig -y
