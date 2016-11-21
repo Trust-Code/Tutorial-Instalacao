@@ -1,6 +1,6 @@
 # Tutorial Instalação para Desenvolvedores
 
-# Disponível atualização automática em batch para sistemas debian based(apt-get). Utilize o arquivo [install_odoo_trustcodebr.sh] para este fim.
+Disponível atualização automática em batch para sistemas debian based(apt-get). Utilize o arquivo [install_odoo_trustcodebr.sh] para este fim.
 
 
 Acompanhar este tutorial em vídeo:
