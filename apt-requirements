@@ -20,6 +20,7 @@ python-cffi
 zlib1g-dev
 fontconfig
 libfreetype6
+libfreetype6-dev
 libx11-6
 libxext6
 libxrender1
