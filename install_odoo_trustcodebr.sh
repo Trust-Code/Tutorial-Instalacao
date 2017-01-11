@@ -54,7 +54,7 @@ sudo apt-get install --no-install-recommends libjpeg-turbo8 -y
 
 Echo "Instalação das dependências pip"
 sudo -H pip install --upgrade pip
-
+sudo -H pip install --upgrade setuptools
 sudo -H pip install Babel==1.3
 sudo -H pip install Jinja2==2.7.3
 sudo -H pip install Mako==1.0.1
