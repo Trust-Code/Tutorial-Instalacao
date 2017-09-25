@@ -33,7 +33,7 @@ Acompanhar este tutorial em vídeo:
 * sudo pip install -r pip-requirements
 * sudo npm install -g less
 * sudo ln -s /usr/bin/nodejs /usr/bin/node
-* wget http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+* wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 * sudo dpkg -i wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
 
