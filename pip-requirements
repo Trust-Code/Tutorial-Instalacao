@@ -16,7 +16,7 @@ greenlet==0.4.7
 jcconv==0.2.3
 lxml==3.4.1
 mock==1.0.1
-ofxparse==0.14
+ofxparse==0.16
 passlib==1.6.2
 psutil==2.2.0
 psycogreen==1.0
@@ -43,7 +43,10 @@ openpyxl==2.4.0-b1
 boto==2.38.0
 odoorpc
 suds_requests
-pytrustnfe
-python-boleto
-python-cnab
 http://labs.libre-entreprise.org/frs/download.php/897/pyxmlsec-0.3.1.tar.gz
+plotly==1.13.0
+pandas==0.19.2
+relatorio==0.6.4
+xlrd==1.0.0
+urllib3==1.22
+pyopenssl==17.2.0
