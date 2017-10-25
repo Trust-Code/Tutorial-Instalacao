@@ -62,9 +62,7 @@ sudo apt-get install --no-install-recommends libx11-6 -y
 sudo apt-get install --no-install-recommends libxext6 -y
 sudo apt-get install --no-install-recommends libxrender1 -y
 sudo apt-get install --no-install-recommends libjpeg-turbo8 -y
-
-wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb -P ~/
-sudo dpkg -i ~/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+sudo apt-get install --no-install-recommends wkhtmltopdf -y
 
 echo "==== Instalação dependências pip para os módulos ===="
 sudo -H pip install --upgrade pip
