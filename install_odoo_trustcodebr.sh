@@ -117,6 +117,7 @@ sudo -H pip install suds_requests
 sudo -H pip install pytrustnfe
 sudo -H pip install python-boleto
 sudo -H pip install python-cnab
+sudo -H pip install wheel
 sudo -H pip install http://labs.libre-entreprise.org/frs/download.php/897/pyxmlsec-0.3.1.tar.gz
 echo ">>> pip e seus requerimentos estão instalados. <<<"
 
