@@ -79,18 +79,20 @@ then
     wget http://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
     tar -zxvf Python-2.7.9.tgz
     cd Python-2.7.9
-    mkdir ~/.localpython
-    ./configure --prefix=@HOME/.localpython
-    make
-    make install
+    sudo mkdir /odoopython
+
+    sudo ./configure --prefix=/odoopython
+    sudo make
+    sudo make install
 
     cd ~/src
-    wget https://pypy.python.org/ftp/packages/5c/79/5dae7494b9f5ed061cff9a8ab8d6e1f02db352f3facf907d9eb614fb80e9/virtualenv-15.0.2.tar.gz
-    tar -zxvf virtualenv-15.0.2.tar.gz
-    cd virtualenv-15.0.2/
-    ~/.localpython/bin/python setup.py install
-    virtualenv ve -p $HOME/.localpython/bin/python2.7
-    source ve/bin/activate
+    wget  https://pypi.python.org/packages/d4/0c/9840c08189e030873387a73b90ada981885010dd9aea134d6de30cd24cb8/virtualenv-15.1.0.tar.gz#md5=44e19f4134906fe2d75124427dc9b716
+    tar -zxvf virtualenv-15.1.0.tar.gz
+    cd virtualenv-15.1.0/
+    sudo /odoopython/bin/python setup.py install
+    mkdir ~/odooenv27
+    /odoopython/bin/virtualenv ~/odooenv27/ve -p /odoopython/bin/python2.7
+    source ~/odooenv27/ve/bin/activate
 
 fi
 
