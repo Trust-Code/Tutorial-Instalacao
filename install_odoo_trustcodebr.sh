@@ -154,7 +154,7 @@ echo ">>> pip e seus requerimentos estão instalados. <<<"
 
 echo "Clonando repositório oficial Odoo no GitHub. Isso pode demorar um bom tempo."
 echo "Se sua internet é lenta, recomenda-se tomar um café enquanto aguarda."
-git clone -b  $ODOO_VERSION.0 https://github.com/odoo/odoo.git ~/odoo
+git clone --depth 1 -b  $ODOO_VERSION.0 https://github.com/odoo/odoo.git ~/odoo
 
 echo "Terminando o arquivo de configuração, quase lá."
 rm ~/odoo/odoo-config
@@ -189,4 +189,4 @@ echo "Obrigado por usar este script !!!"
 echo "iniciar o sistema com os comandos"
 echo "source ~/odooenv27/ve/bin/activate"
 echo "cd ~/odoo"
-echo "odoo-bin --config=odoo-config"
+echo "./odoo-bin --config=odoo-config"
