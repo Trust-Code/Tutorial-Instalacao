@@ -145,6 +145,7 @@ pip install openpyxl==2.4.0-b1
 pip install boto==2.38.0
 pip install odoorpc
 pip install suds_requests
+pip install urllib3
 pip install pytrustnfe
 pip install python-boleto
 pip install python-cnab
@@ -174,7 +175,7 @@ echo "db_password = 123" >> ~/odoo/odoo-config
 
 echo "Clonando repositório oficial dos módulos Odoo Brasil no GitHub."
 echo "Agora falta pouco."
-git clone https://github.com/Trust-Code/odoo-brasil.git ~/odoo-brasil
+git clone -b $ODOO_VERSION.0 https://github.com/Trust-Code/odoo-brasil.git ~/odoo-brasil
 
 echo "==== Instalação e configuração Odoo Brasil completa ===="
 echo "---- PostgreSQL ---- "
