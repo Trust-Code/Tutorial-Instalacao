@@ -1,6 +1,6 @@
 #! /bin/bash
 
-ODOO_VERSION='10'
+ODOO_VERSION='11'
 
 echo "Esse script é focado na instalação do odoo V.$ODOO_VERSION"
 echo "com o foco em desenvolvimento."
@@ -53,7 +53,7 @@ sudo apt-get install --no-install-recommends python-libxml2 -y
 sudo apt-get install --no-install-recommends libxmlsec1-dev -y
 sudo apt-get install --no-install-recommends python-openssl -y
 sudo apt-get install --no-install-recommends python-cffi -y
-
+sudo apt-get install --no-install-recommends libxmlsec1-opensslopenssl
 echo "==== Instalando dependências do WKHTMLTOX ===="
 sudo apt-get install --no-install-recommends zlib1g-dev -y
 sudo apt-get install --no-install-recommends fontconfig -y
@@ -72,7 +72,7 @@ if [ $ODOO_VERSION == '10' ]
 then
 
     echo "======== Caso a versão a versão seja odoo 10 ========"
-    echo "============= Virtualenv 2,7 será criado ============"
+    echo "============= Virtualenv 2.7 será criado ============"
 
     mkdir ~/src
     cd ~
@@ -93,64 +93,143 @@ then
     mkdir ~/odooenv27
     /odoopython/bin/virtualenv ~/odooenv27/ve -p /odoopython/bin/python2.7
     source ~/odooenv27/ve/bin/activate
+    pip install --upgrade pip
+    pip install --upgrade setuptools
+    pip install Babel==1.3
+    pip install Jinja2==2.7.3
+    pip install Mako==1.0.1
+    pip install MarkupSafe==0.23
+    pip install Pillow==2.7.0
+    pip install Python-Chart==1.39
+    pip install PyYAML==3.11
+    pip install Werkzeug==0.9.6
+    pip install argparse==1.2.1
+    pip install decorator==3.4.0
+    pip install docutils==0.12
+    pip install feedparser==5.1.3
+    pip install gdata==2.0.18
+    pip install gevent==1.0.2
+    pip install greenlet==0.4.7
+    pip install jcconv==0.2.3
+    pip install lxml==3.4.1
+    pip install mock==1.0.1
+    pip install ofxparse==0.14
+    pip install passlib==1.6.2
+    pip install psutil==2.2.0
+    pip install psycogreen==1.0
+    pip install psycopg2==2.5.4
+    pip install pyPdf==1.13
+    pip install pydot==1.0.2
+    pip install pyparsing==2.0.3
+    pip install pyserial==2.7
+    pip install python-dateutil==2.4.0
+    pip install python-ldap==2.4.19
+    pip install python-openid==2.2.5
+    pip install pytz==2014.10
+    pip install pyusb==1.0.0b2
+    pip install qrcode==5.1
+    pip install reportlab==3.1.44
+    pip install requests==2.6.0
+    pip install six==1.9.0
+    pip install suds-jurko==0.6
+    pip install vobject==0.6.6
+    pip install wsgiref==0.1.2
+    pip install XlsxWriter==0.7.7
+    pip install xlwt==0.7.5
+    pip install openpyxl==2.4.0-b1
+    pip install boto==2.38.0
+    pip install odoorpc
+    pip install suds_requests
+    pip install urllib3
+    pip install pytrustnfe
+    pip install python-boleto
+    pip install python-cnab
+    pip install wheel
+
+elif [ $ODOO_VERSION == '11' ]
+then
+    echo "======== Caso a versão a versão seja odoo 11 ========"
+    echo "============= Virtualenv 3.5 será criado ============"
+
+    mkdir ~/odooenv35
+    sudo apt install python3-pip -y
+    sudo pip3 install virtualenv
+    cd ~/odooenv35
+    mkdir envpacks
+    cd envpacks
+
+    virtualenv -p /usr/bin/python3.5 ve
+    source ve/bin/activate
+    pip3 install --upgrade pip
+    pip3 install --upgrade setuptools
+    pip3 install Babel==1.3
+    pip3 install Jinja2==2.7.3
+    pip3 install Mako==1.0.1
+    pip3 install MarkupSafe==0.23
+    pip3 install Pillow==2.7.0
+    pip3 install Python-Chart==1.39
+    pip3 install PyYAML==3.11
+    pip3 install Werkzeug==0.9.6
+    pip3 install argparse==1.2.1
+    pip3 install decorator==3.4.0
+    pip3 install docutils==0.12
+    pip3 install feedparser==5.1.3
+    pip3 install gdata==2.0.18
+    pip3 install gevent==1.0.2
+    pip3 install greenlet==0.4.7
+    #pip3 install jcconv==0.2.3
+    #Versão que roda em python3 não está no repo oficial. Git it
+    git clone https://github.com/ghyde/jcconv
+    cd jcconv
+    python setup.py install
+    cd ..
+    pip3 install lxml==3.4.1
+    pip3 install mock==1.0.1
+    pip3 install ofxparse==0.14
+    pip3 install passlib==1.6.2
+    pip3 install psutil==2.2.0
+    pip3 install psycogreen==1.0
+    pip3 install psycopg2==2.5.4
+    pip3 install pyPdf==1.13
+    pip3 install pydot==1.2.4
+    pip3 install pyparsing==2.0.3
+    pip3 install pyserial==2.7
+    pip3 install python-dateutil==2.4.0
+    pip3 install python-ldap==3.0.0b4
+    pip3 install python-openid==2.2.5
+    pip3 install pytz==2014.10
+    pip3 install pyusb==1.0.0b2
+    pip3 install qrcode==5.1
+    pip3 install reportlab==3.1.44
+    pip3 install requests==2.6.0
+    pip3 install six==1.9.0
+    pip3 install suds-jurko==0.6
+    pip3 install vobject==0.9.5
+    #pip3 install wsgiref==0.1.2 Already included by default(python 3)
+    pip3 install XlsxWriter==0.7.7
+    pip3 install xlwt==1.3.0
+    pip3 install openpyxl==2.4.0-b1
+    pip3 install boto==2.38.0
+    pip3 install odoorpc
+    #pip3 install suds_requests
+    git clone https://github.com/armooo/suds_requests
+    cd suds_requests/
+    python setup.py install
+    cd ..
+    pip3 install urllib3
+    #pip3 install pytrustnfe
+    git clone https://github.com/danimaribeiro/PyTrustNFe
+    cd PyTrustNFe/
+    python setup.py install
+    cd ..
+    pip3 install python3-boleto
+    pip3 install python3-cnab
+    pip3 install wheel
 
 fi
 
 
 
-pip install --upgrade pip
-pip install --upgrade setuptools
-pip install Babel==1.3
-pip install Jinja2==2.7.3
-pip install Mako==1.0.1
-pip install MarkupSafe==0.23
-pip install Pillow==2.7.0
-pip install Python-Chart==1.39
-pip install PyYAML==3.11
-pip install Werkzeug==0.9.6
-pip install argparse==1.2.1
-pip install decorator==3.4.0
-pip install docutils==0.12
-pip install feedparser==5.1.3
-pip install gdata==2.0.18
-pip install gevent==1.0.2
-pip install greenlet==0.4.7
-pip install jcconv==0.2.3
-pip install lxml==3.4.1
-pip install mock==1.0.1
-pip install ofxparse==0.14
-pip install passlib==1.6.2
-pip install psutil==2.2.0
-pip install psycogreen==1.0
-pip install psycopg2==2.5.4
-pip install pyPdf==1.13
-pip install pydot==1.0.2
-pip install pyparsing==2.0.3
-pip install pyserial==2.7
-pip install python-dateutil==2.4.0
-pip install python-ldap==2.4.19
-pip install python-openid==2.2.5
-pip install pytz==2014.10
-pip install pyusb==1.0.0b2
-pip install qrcode==5.1
-pip install reportlab==3.1.44
-pip install requests==2.6.0
-pip install six==1.9.0
-pip install suds-jurko==0.6
-pip install vobject==0.6.6
-pip install wsgiref==0.1.2
-pip install XlsxWriter==0.7.7
-pip install xlwt==0.7.5
-pip install openpyxl==2.4.0-b1
-pip install boto==2.38.0
-pip install odoorpc
-pip install suds_requests
-pip install urllib3
-pip install pytrustnfe
-pip install python-boleto
-pip install python-cnab
-pip install wheel
-pip install http://labs.libre-entreprise.org/frs/download.php/897/pyxmlsec-0.3.1.tar.gz
 echo ">>> pip e seus requerimentos estão instalados. <<<"
 
 echo "Clonando repositório oficial Odoo no GitHub. Isso pode demorar um bom tempo."
@@ -188,6 +267,16 @@ echo "========================================================"
 echo "A instalação está completa !"
 echo "Obrigado por usar este script !!!"
 echo "iniciar o sistema com os comandos"
-echo "source ~/odooenv27/ve/bin/activate"
-echo "cd ~/odoo"
-echo "./odoo-bin --config=odoo-config"
+if [ $ODOO_VERSION == '10' ]
+then
+    echo "source ~/odooenv27/ve/bin/activate"
+    echo "cd ~/odoo"
+    echo "git checkout $ODOO_VERSION.0"
+    echo "./odoo-bin --config=odoo-config"
+elif [ $ODOO_VERSION == '11' ]
+then
+    echo "source ~/odooenv35/ve/bin/activate"
+    echo "cd ~/odoo"
+    echo "git checkout $ODOO_VERSION.0"
+    echo "./odoo-bin --config=odoo-config"
+fi
