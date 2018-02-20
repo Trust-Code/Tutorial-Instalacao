@@ -22,6 +22,7 @@ echo "pgAdmin instalado"
 
 echo "Instalando python-dev"
 sudo apt install python-dev -y
+sudo apt install python3-dev -y
 echo "Pacote python-dev instalado"
 
 echo "Instalando gcc"
@@ -43,6 +44,7 @@ sudo apt-get install --no-install-recommends libpq-dev -y
 sudo apt-get install --no-install-recommends libjpeg-dev -y
 sudo apt-get install --no-install-recommends nodejs -y
 sudo apt-get install --no-install-recommends npm -y
+suto apt-get install --no-install-recommends python3-pypdf2
 sudo apt-get install node-less -y
 sudo npm install -g less
 sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -158,8 +160,8 @@ then
     mkdir envpacks
     cd envpacks
 
-    virtualenv -p /usr/bin/python3.5 ve
-    source ve/bin/activate
+    virtualenv -p /usr/bin/python3.5 ~/odooenv35/ve
+    source ~/odooenv35/ve/bin/activate
     pip3 install --upgrade pip
     pip3 install --upgrade setuptools
     pip3 install Babel==2.3.4
@@ -298,7 +300,9 @@ echo "db_password = 123" >> ~/odoo/odoo-config
 
 echo "Clonando repositório oficial dos módulos Odoo Brasil no GitHub."
 echo "Agora falta pouco."
-git clone -b $ODOO_VERSION.0 https://github.com/Trust-Code/odoo-brasil.git ~/odoo-brasil
+git clone https://github.com/Trust-Code/odoo-brasil.git ~/odoo-brasil
+cd ~/odoo-brasil
+git checkout $ODOO_VERSION.0
 
 echo "==== Instalação e configuração Odoo Brasil completa ===="
 echo "---- PostgreSQL ---- "
@@ -314,12 +318,16 @@ echo "iniciar o sistema com os comandos"
 if [ $ODOO_VERSION == '10' ]
 then
     echo "source ~/odooenv27/ve/bin/activate"
+    echo "cd ~/odoo-brasil"
+    echo "git checkout $ODOO_VERSION.0"
     echo "cd ~/odoo"
     echo "git checkout $ODOO_VERSION.0"
     echo "./odoo-bin --config=odoo-config"
 elif [ $ODOO_VERSION == '11' ]
 then
     echo "source ~/odooenv35/ve/bin/activate"
+    echo "cd ~/odoo-brasil"
+    echo "git checkout $ODOO_VERSION.0"
     echo "cd ~/odoo"
     echo "git checkout $ODOO_VERSION.0"
     echo "./odoo-bin --config=odoo-config"
