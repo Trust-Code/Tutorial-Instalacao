@@ -33,6 +33,7 @@ echo "Criando usuário postgreSQL ..."
 sudo -u postgres -- psql -c "ALTER USER postgres WITH PASSWORD '123';"
 sudo -u postgres -- psql -c "DROP ROLE odoo;"
 sudo -u postgres -- psql -c "CREATE ROLE odoo LOGIN ENCRYPTED PASSWORD 'md5f7b7bca97b76afe46de6631ff9f7175c' NOSUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION"
+sudo -u postgres -- createdb v11dev
 
 echo "==== Instalando dependências Odoo ===="
 sudo apt-get install --no-install-recommends python-pip -y
@@ -230,7 +231,6 @@ then
     pip3 install passlib==1.6.2
     pip3 install psutil==2.2.0
     pip3 install psycogreen==1.0
-    pip3 install psycopg2==2.5.4
     pip3 install pyPdf==1.13
     pip3 install pydot==1.2.4
     pip3 install pyparsing==2.0.3
@@ -248,7 +248,6 @@ then
     pip3 install vobject
     pip3 install qrcode
     pip3 install pyldap
-    #pip3 install wsgiref==0.1.2 Already included by default(python 3)
     pip3 install XlsxWriter==0.7.7
     pip3 install xlwt==1.3.0
     pip3 install openpyxl==2.4.0-b1
@@ -330,5 +329,5 @@ then
     echo "git checkout $ODOO_VERSION.0"
     echo "cd ~/odoo"
     echo "git checkout $ODOO_VERSION.0"
-    echo "./odoo-bin --config=odoo-config"
+    echo "./odoo-bin --config=odoo-config -d v11dev"
 fi
