@@ -192,11 +192,13 @@ then
     pip3 install psycopg2==2.5.4
     pip3 install pyPdf==1.13
     pip3 install pydot==1.2.4
+    pip3 install PyPDF2==1.26.0
     pip3 install pyparsing==2.0.3
     pip3 install pyserial==2.7
     pip3 install python-dateutil==2.4.0
     pip3 install python-ldap==3.0.0b4
     pip3 install python-openid==2.2.5
+    pip3 install html2text==2018.1.9
     pip3 install pytz==2014.10
     pip3 install pyusb==1.0.0b2
     pip3 install qrcode==5.1
