@@ -22,6 +22,7 @@ echo "pgAdmin instalado"
 
 echo "Instalando python-dev"
 sudo apt install python-dev -y
+sudo apt install python3-dev -y
 echo "Pacote python-dev instalado"
 
 echo "Instalando gcc"
@@ -32,6 +33,7 @@ echo "Criando usuário postgreSQL ..."
 sudo -u postgres -- psql -c "ALTER USER postgres WITH PASSWORD '123';"
 sudo -u postgres -- psql -c "DROP ROLE odoo;"
 sudo -u postgres -- psql -c "CREATE ROLE odoo LOGIN ENCRYPTED PASSWORD 'md5f7b7bca97b76afe46de6631ff9f7175c' NOSUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION"
+sudo -u postgres -- createdb v11dev
 
 echo "==== Instalando dependências Odoo ===="
 sudo apt-get install --no-install-recommends python-pip -y
@@ -43,6 +45,7 @@ sudo apt-get install --no-install-recommends libpq-dev -y
 sudo apt-get install --no-install-recommends libjpeg-dev -y
 sudo apt-get install --no-install-recommends nodejs -y
 sudo apt-get install --no-install-recommends npm -y
+suto apt-get install --no-install-recommends python3-pypdf2
 sudo apt-get install node-less -y
 sudo npm install -g less
 sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -158,11 +161,50 @@ then
     mkdir envpacks
     cd envpacks
 
-    virtualenv -p /usr/bin/python3.5 ve
-    source ve/bin/activate
+    virtualenv -p /usr/bin/python3.5 ~/odooenv35/ve
+    source ~/odooenv35/ve/bin/activate
     pip3 install --upgrade pip
     pip3 install --upgrade setuptools
-    pip3 install Babel==1.3
+    pip3 install Babel==2.3.4
+    pip3 install decorator==4.0.10
+    pip3 install docutils==0.12
+    pip3 install docutils==0.12
+    pip3 install ebaysdk==2.1.5
+    pip3 install feedparser==5.2.1
+    pip3 install gevent==1.1.2 ; sys_platform != 'win32'
+    pip3 install greenlet==0.4.10
+    pip3 install html2text==2016.9.19
+    pip3 install Jinja2==2.8
+    pip3 install lxml==3.7.1 ; sys_platform != 'win32'
+    pip3 install lxml ; sys_platform == 'win32'
+    pip3 install Mako==1.0.4
+    pip3 install MarkupSafe==0.23
+    pip3 install mock==2.0.0
+    pip3 install num2words==0.5.4
+    pip3 install ofxparse==0.16
+    pip3 install passlib==1.6.5
+    pip3 install Pillow==4.0.0
+    pip3 install psutil==4.3.1; sys_platform != 'win32'
+    pip3 install psycopg2==2.7.3.1; sys_platform != 'win32'
+    pip3 install pydot==1.2.3
+    pip3 install pyldap==2.4.28; sys_platform != 'win32'
+    pip3 install pyparsing==2.1.10
+    pip3 install PyPDF2==1.26.0
+    pip3 install pyserial==3.1.1
+    pip3 install python-dateutil==2.5.3
+    pip3 install pytz==2016.7
+    pip3 install pyusb==1.0.0
+    pip3 install PyYAML==3.12
+    pip3 install qrcode==5.3
+    pip3 install reportlab==3.3.0
+    pip3 install requests==2.11.1
+    pip3 install suds-jurko==0.6
+    pip3 install vatnumber==1.2
+    pip3 install vobject==0.9.3
+    pip3 install Werkzeug==0.11.15
+    pip3 install XlsxWriter==0.9.3
+    pip3 install xlwt==1.3.*
+    pip3 install xlrd==1.0.0
     pip3 install Jinja2==2.7.3
     pip3 install Mako==1.0.1
     pip3 install MarkupSafe==0.23
@@ -189,7 +231,6 @@ then
     pip3 install passlib==1.6.2
     pip3 install psutil==2.2.0
     pip3 install psycogreen==1.0
-    pip3 install psycopg2==2.5.4
     pip3 install pyPdf==1.13
     pip3 install pydot==1.2.4
     pip3 install PyPDF2==1.26.0
@@ -206,8 +247,9 @@ then
     pip3 install requests==2.6.0
     pip3 install six==1.9.0
     pip3 install suds-jurko==0.6
-    pip3 install vobject==0.9.5
-    #pip3 install wsgiref==0.1.2 Already included by default(python 3)
+    pip3 install vobject
+    pip3 install qrcode
+    pip3 install pyldap
     pip3 install XlsxWriter==0.7.7
     pip3 install xlwt==1.3.0
     pip3 install openpyxl==2.4.0-b1
@@ -236,7 +278,10 @@ echo ">>> pip e seus requerimentos estão instalados. <<<"
 
 echo "Clonando repositório oficial Odoo no GitHub. Isso pode demorar um bom tempo."
 echo "Se sua internet é lenta, recomenda-se tomar um café enquanto aguarda."
-git clone --depth 1 -b  $ODOO_VERSION.0 https://github.com/odoo/odoo.git ~/odoo
+git clone --depth 1 https://github.com/odoo/odoo.git ~/odoo
+cd ~/odoo
+git checkout $ODOO_VERSION.0
+
 
 echo "Terminando o arquivo de configuração, quase lá."
 rm ~/odoo/odoo-config
@@ -256,7 +301,9 @@ echo "db_password = 123" >> ~/odoo/odoo-config
 
 echo "Clonando repositório oficial dos módulos Odoo Brasil no GitHub."
 echo "Agora falta pouco."
-git clone -b $ODOO_VERSION.0 https://github.com/Trust-Code/odoo-brasil.git ~/odoo-brasil
+git clone https://github.com/Trust-Code/odoo-brasil.git ~/odoo-brasil
+cd ~/odoo-brasil
+git checkout $ODOO_VERSION.0
 
 echo "==== Instalação e configuração Odoo Brasil completa ===="
 echo "---- PostgreSQL ---- "
@@ -272,13 +319,17 @@ echo "iniciar o sistema com os comandos"
 if [ $ODOO_VERSION == '10' ]
 then
     echo "source ~/odooenv27/ve/bin/activate"
+    echo "cd ~/odoo-brasil"
+    echo "git checkout $ODOO_VERSION.0"
     echo "cd ~/odoo"
     echo "git checkout $ODOO_VERSION.0"
     echo "./odoo-bin --config=odoo-config"
 elif [ $ODOO_VERSION == '11' ]
 then
     echo "source ~/odooenv35/ve/bin/activate"
+    echo "cd ~/odoo-brasil"
+    echo "git checkout $ODOO_VERSION.0"
     echo "cd ~/odoo"
     echo "git checkout $ODOO_VERSION.0"
-    echo "./odoo-bin --config=odoo-config"
+    echo "./odoo-bin --config=odoo-config -d v11dev"
 fi
