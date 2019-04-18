@@ -1,9 +1,6 @@
 ##### Dependências Odoo #####
-gcc
-python-pip
-python-dev
 libxml2-dev
-libxslt-dev
+libxslt1-dev
 libevent-dev
 libsasl2-dev
 libldap2-dev
@@ -12,8 +9,14 @@ libjpeg-dev
 nodejs
 npm
 
+# Ferramentas
+postgresql-client
+python3-pip
+python3-dev
+locales
+supervisor
+
 ##### Dependências da Localização Brasileira #####
-python-libxml2
 libxmlsec1-dev
 python-openssl
 python-cffi
@@ -27,7 +30,4 @@ libx11-6
 libxext6
 libxrender1
 libjpeg-turbo8
-
-
-##### Ferramentas Extras #####
-git
+gsfonts
