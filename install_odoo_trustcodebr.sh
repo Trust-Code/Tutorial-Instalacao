@@ -36,38 +36,7 @@ sudo -u postgres -- psql -c "CREATE ROLE odoo LOGIN ENCRYPTED PASSWORD 'md5f7b7b
 sudo -u postgres -- createdb v11dev
 
 echo "==== Instalando dependências Odoo ===="
-sudo apt-get install --no-install-recommends python-pip -y
-sudo apt-get install --no-install-recommends libxml2-dev -y
-sudo apt-get install --no-install-recommends libxslt-dev -y
-sudo apt-get install --no-install-recommends libsasl2-dev -y
-sudo apt-get install --no-install-recommends libldap2-dev -y
-sudo apt-get install --no-install-recommends libpq-dev -y
-sudo apt-get install --no-install-recommends libjpeg-dev -y
-sudo apt-get install --no-install-recommends nodejs -y
-sudo apt-get install --no-install-recommends npm -y
-suto apt-get install --no-install-recommends python3-pypdf2
-sudo apt-get install node-less -y
-sudo npm install -g less
-sudo ln -s /usr/bin/nodejs /usr/bin/node
-
-
-echo "==== Instalando dependências da Localização Brasileira ===="
-sudo apt-get install --no-install-recommends python-libxml2 -y
-sudo apt-get install --no-install-recommends libxmlsec1-dev -y
-sudo apt-get install --no-install-recommends python-openssl -y
-sudo apt-get install --no-install-recommends python-cffi -y
-sudo apt-get install --no-install-recommends libxmlsec1-opensslopenssl
-echo "==== Instalando dependências do WKHTMLTOX ===="
-sudo apt-get install --no-install-recommends zlib1g-dev -y
-sudo apt-get install --no-install-recommends fontconfig -y
-sudo apt-get install --no-install-recommends libfreetype6 -y
-sudo apt-get install --no-install-recommends libx11-6 -y
-sudo apt-get install --no-install-recommends libxext6 -y
-sudo apt-get install --no-install-recommends libxrender1 -y
-sudo apt-get install --no-install-recommends libjpeg-turbo8 -y
-
-wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb -P ~/
-sudo dpkg -i ~/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+sudo apt-get install -y --no-install-recommends $(grep -v '^#' apt-requirements)
 
 echo "==== Instalação dependências pip para os módulos ===="
 
@@ -163,98 +132,70 @@ then
 
     virtualenv -p /usr/bin/python3.5 ~/odooenv35/ve
     source ~/odooenv35/ve/bin/activate
-    pip3 install --upgrade pip
-    pip3 install --upgrade setuptools
+    # Odoo
     pip3 install Babel==2.3.4
     pip3 install decorator==4.0.10
     pip3 install docutils==0.12
-    pip3 install docutils==0.12
-    pip3 install ebaysdk==2.1.5
+    pip3 install ebaysdk==2.1.4
     pip3 install feedparser==5.2.1
-    pip3 install gevent==1.1.2 ; sys_platform != 'win32'
+    pip3 install gevent==1.1.2
     pip3 install greenlet==0.4.10
     pip3 install html2text==2016.9.19
     pip3 install Jinja2==2.8
-    pip3 install lxml==3.7.1 ; sys_platform != 'win32'
-    pip3 install lxml ; sys_platform == 'win32'
+    pip3 install lxml==4.2.3
     pip3 install Mako==1.0.4
     pip3 install MarkupSafe==0.23
     pip3 install mock==2.0.0
     pip3 install num2words==0.5.4
     pip3 install ofxparse==0.16
     pip3 install passlib==1.6.5
-    pip3 install Pillow==4.0.0
-    pip3 install psutil==4.3.1; sys_platform != 'win32'
-    pip3 install psycopg2==2.7.3.1; sys_platform != 'win32'
+    pip3 install Pillow==3.4.1
+    pip3 install psutil==4.3.1
+    pip3 install psycogreen==1.0
+    pip3 install psycopg2==2.7.1
     pip3 install pydot==1.2.3
-    pip3 install pyldap==2.4.28; sys_platform != 'win32'
+    pip3 install pyldap==2.4.28
     pip3 install pyparsing==2.1.10
     pip3 install PyPDF2==1.26.0
     pip3 install pyserial==3.1.1
     pip3 install python-dateutil==2.5.3
+    pip3 install python-openid==2.2.5
     pip3 install pytz==2016.7
     pip3 install pyusb==1.0.0
     pip3 install PyYAML==3.12
     pip3 install qrcode==5.3
     pip3 install reportlab==3.3.0
     pip3 install requests==2.11.1
+    pip3 install six==1.10.0
     pip3 install suds-jurko==0.6
     pip3 install vatnumber==1.2
     pip3 install vobject==0.9.3
-    pip3 install Werkzeug==0.11.15
+    pip3 install Werkzeug==0.11.11
     pip3 install XlsxWriter==0.9.3
     pip3 install xlwt==1.3.*
     pip3 install xlrd==1.0.0
-    pip3 install Jinja2==2.7.3
-    pip3 install Mako==1.0.1
-    pip3 install MarkupSafe==0.23
-    pip3 install Pillow==2.7.0
-    pip3 install Python-Chart==1.39
-    pip3 install PyYAML==3.11
-    pip3 install Werkzeug==0.9.6
-    pip3 install argparse==1.2.1
-    pip3 install decorator==3.4.0
-    pip3 install docutils==0.12
-    pip3 install feedparser==5.1.3
-    pip3 install gdata==2.0.18
-    pip3 install gevent==1.0.2
-    pip3 install greenlet==0.4.7
-    #pip3 install jcconv==0.2.3
+    pip3 install phonenumbers==8.8.11
+
+    # odoo-brasil
+    pip3 install suds-jurko-requests
+    pip3 install xmlsec
+
+    # trustcode-addons
+    pip3 install boto3>=1.5.12
+    pip3 install plotly==2.4.1
+    pip3 install pandas==0.19.2
+    pip3 install relatorio==0.6.4
+    pip3 install urllib3==1.22
+    pip3 install pyopenssl==17.2.0
+    pip3 install num2words==0.5.6
+    pip3 install twilio
+    pip3 install pika==0.12.0
+    pip3 install iugu
     #Versão que roda em python3 não está no repo oficial. Git it
     git clone https://github.com/ghyde/jcconv
     cd jcconv
     python setup.py install
     cd ..
-    pip3 install lxml==3.4.1
-    pip3 install mock==1.0.1
-    pip3 install ofxparse==0.14
-    pip3 install passlib==1.6.2
-    pip3 install psutil==2.2.0
-    pip3 install psycogreen==1.0
-    pip3 install pyPdf==1.13
-    pip3 install pydot==1.2.4
-    pip3 install PyPDF2==1.26.0
-    pip3 install pyparsing==2.0.3
-    pip3 install pyserial==2.7
-    pip3 install python-dateutil==2.4.0
-    pip3 install python-ldap==3.0.0b4
-    pip3 install python-openid==2.2.5
-    pip3 install html2text==2018.1.9
-    pip3 install pytz==2014.10
-    pip3 install pyusb==1.0.0b2
-    pip3 install qrcode==5.1
-    pip3 install reportlab==3.1.44
-    pip3 install requests==2.6.0
-    pip3 install six==1.9.0
-    pip3 install suds-jurko==0.6
-    pip3 install vobject
-    pip3 install qrcode
-    pip3 install pyldap
-    pip3 install XlsxWriter==0.7.7
-    pip3 install xlwt==1.3.0
-    pip3 install openpyxl==2.4.0-b1
-    pip3 install boto==2.38.0
-    pip3 install odoorpc
     #pip3 install suds_requests
     git clone https://github.com/armooo/suds_requests
     cd suds_requests/
@@ -266,10 +207,14 @@ then
     cd PyTrustNFe/
     python setup.py install
     cd ..
+    git clone https://github.com/Trust-Code/PyTrustCnab240.git
+    cd PyTrustCnab240
+    python setup.py install
+    cd ..
     pip3 install python3-boleto
     pip3 install python3-cnab
     pip3 install wheel
-
+    sudo npm install -g less
 fi
 
 
