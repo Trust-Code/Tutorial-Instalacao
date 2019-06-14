@@ -45,7 +45,7 @@ sudo apt-get install --no-install-recommends libpq-dev -y
 sudo apt-get install --no-install-recommends libjpeg-dev -y
 sudo apt-get install --no-install-recommends nodejs -y
 sudo apt-get install --no-install-recommends npm -y
-suto apt-get install --no-install-recommends python3-pypdf2
+sudo apt-get install --no-install-recommends python3-pypdf2
 sudo apt-get install node-less -y
 sudo npm install -g less
 sudo ln -s /usr/bin/nodejs /usr/bin/node
