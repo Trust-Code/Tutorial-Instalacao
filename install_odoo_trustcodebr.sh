@@ -56,7 +56,7 @@ sudo apt-get install --no-install-recommends python-libxml2 -y
 sudo apt-get install --no-install-recommends libxmlsec1-dev -y
 sudo apt-get install --no-install-recommends python-openssl -y
 sudo apt-get install --no-install-recommends python-cffi -y
-sudo apt-get install --no-install-recommends libxmlsec1-opensslopenssl
+sudo apt-get install --no-install-recommends libxmlsec1-openssl
 echo "==== Instalando dependências do WKHTMLTOX ===="
 sudo apt-get install --no-install-recommends zlib1g-dev -y
 sudo apt-get install --no-install-recommends fontconfig -y
